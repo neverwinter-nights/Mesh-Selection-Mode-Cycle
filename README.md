@@ -39,8 +39,9 @@ The add-on will be added into a **Mesh** category.
 11. Enjoy the Blender editor which is now more comfortable to use.
 
 Below is an example of assignment of `Alt` + `Mouse Scroll Wheel` to both actions.   
-Screenshot's width is about 1000 px. To see it, you might need to open the page in a full screen.
-![Keymap](./Screenshot/key_binding_example.png)
+Screenshot's width is about 1000 px. To see it, you might need to open the page in a full screen.  
+![Keymap](https://raw.githubusercontent.com/neverwinter-nights/Mesh-Selection-Mode-Cycle/main/Mesh%20Selection%20Mode%20Cycle/Screenshot/key_binding_example.png)
+<!-- Local link: ![Keymap](./Screenshot/key_binding_example.png) -->
 
 ## Usage
 Enter the mesh editing mode. Press your key combination.  

@@ -2,6 +2,8 @@
 
 # Mesh Selection Mode Cycle.
 
+# Version 1.1.
+
 bl_info = {
     "name": "Mesh Selection Mode Cycle",
     "description": "Cycle through mesh selection modes. Works when a single mode is selected.",
@@ -11,6 +13,7 @@ bl_info = {
 }
 
 import bpy
+
 
 class MSM:
     # Number of possible mesh selection modes. In Blender 3.1 there are three
@@ -24,6 +27,13 @@ class MSM:
     ResultSuccess = 'FINISHED'
 
     MeshEditMode = 'EDIT_MESH'
+
+    # Arguments for the 'bpy.ops.mesh.select_mode' method.
+    SelectModeTypes = {
+        1: 'VERT',
+        2: 'EDGE',
+        3: 'FACE'
+    }
 
 
 class McaMeshSelectionModePrevious(bpy.types.Operator):
@@ -104,8 +114,9 @@ def get_next_msm(cur_mode):
     return cur_mode + 1
 
 
-# Selects (applies) the mesh selection mode.
-def select_msm(msm_idx):
+# Selects (applies) the mesh selection mode. This method uses a low level API,
+# which is not synchronized with the selection.
+def select_msm_ll(msm_idx):
     msm = []
     for i in range(MSM.Count):
         msm.append(False)
@@ -113,6 +124,13 @@ def select_msm(msm_idx):
     msm[msm_idx] = True
 
     bpy.context.tool_settings.mesh_select_mode = msm
+
+
+# Selects (applies) the mesh selection mode. This method uses a high level API,
+# which is synchronized with the selection.
+def select_msm(msm_idx):
+    typeText = MSM.SelectModeTypes[msm_idx + 1]
+    bpy.ops.mesh.select_mode(use_extend=False, use_expand=False, type=typeText)
 
 
 # Checks whether the mesh edit mode is selected.

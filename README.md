@@ -49,7 +49,7 @@ If you had a single selection mode enabled, it will be switched to a next or a
 previous mesh selection mode depending on your settings. 
 
 ## Notes
-Unfortunately, modern version of Blender editor have bugs with controls. For 
+Unfortunately, modern versions of Blender editor have bugs with controls. For 
 some reason the developers of Blender decided to assign hundreds of actions to 
 the **Press** event instead of the **Click** event. If your newly assigned key 
 does not work, do check if there are any **Press** events assigned to the same 
